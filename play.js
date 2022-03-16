@@ -1,31 +1,42 @@
 //this file is where you launch your game client
 
 //the client you build will connect to a game server ran by LHL
-const {connect} = require('./client.js');
+const { connect } = require('./client.js');
 
-const net = require("net");
+const net = require("net")
 
-// establishes a connection with the game server
-// const connect = function () {
-//   const conn = net.createConnection({
-//     host: '165.227.47.243',
-//     port: 50541
-//   });
-
-//   // interpret incoming data as text
-//   conn.setEncoding("utf8");
-
-//   conn.on("data", (data) => {
-//     console.log('message from server:', data);
-//   });
-
-//   conn.on("connect", () => {
-//     console.log('connected to the server');
-//   });
+// let conn = connect();
 
 
-//   return conn;
-// };
+const handleUserInput = function (key) {
+  let command = ''
+
+  // \u0003 maps to ctrl+c input
+  if (key === '\u0003') {
+    process.exit();
+  }
+
+  // if (key === "W") {
+  //   command = 'Move: up'
+  // }
+  conn.write(`${command}`);  
+};
+
+
+const setupInput = function () {
+  const stdin = process.stdin;
+
+  stdin.on("data", handleUserInput);
+  process.stdin.on('data', (key) => {
+    handleUserInput(key);
+  });
+  stdin.setRawMode(true);
+  stdin.setEncoding("utf8");
+  stdin.resume();
+
+  return stdin;
+};
 
 console.log("Connecting ...");
-connect();
+
+setupInput();

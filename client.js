@@ -20,25 +20,11 @@ const connect = function () {
     conn.write('Name: XST');
 
     //for the Move: up message
-    setInterval(() => {
-    conn.write();  
-  }, 50);
+  //   setInterval(() => {
+    // conn.write(`${command}`);  
+  // }, 50);
     
   });
-
-  // conn.on('connect', () => {
-  //   conn.write('Name: XST');
-  // });
-
-  // // setTimeout(() => {
-  // conn.on('connect', () => {
-  //   conn.write('Move: up');
-  // });
-
-  // conn.on('connect', () => {
-  //   conn.write('Move: up');
-  // });
-  // // }, 500);
 
   return conn;
 };
