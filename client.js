@@ -13,13 +13,32 @@ const connect = function () {
     console.log('message from server:', data);
   });
 
+
   conn.on("connect", () => {
     console.log('Successfully connected to game server');
+    
+    conn.write('Name: XST');
+
+    //for the Move: up message
+    setInterval(() => {
+    conn.write();  
+  }, 50);
+    
   });
 
-  conn.on('connect', () => {
-    conn.write('Name: XST');
-  });
+  // conn.on('connect', () => {
+  //   conn.write('Name: XST');
+  // });
+
+  // // setTimeout(() => {
+  // conn.on('connect', () => {
+  //   conn.write('Move: up');
+  // });
+
+  // conn.on('connect', () => {
+  //   conn.write('Move: up');
+  // });
+  // // }, 500);
 
   return conn;
 };
