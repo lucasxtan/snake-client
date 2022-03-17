@@ -1,16 +1,20 @@
 //this file is where you launch your game client
 
 //the client you build will connect to a game server ran by LHL
-const { connect } = require('./client.js');
+const connect = require('./client.js');
 
-const {setupInput} = require('./input.js');
+const setupInput = require('./input.js');
 
-const net = require("net")
+// const net = require("net")
+let connection;
 
+connection = connect();
 
-let conn = connect();
+setupInput(connection);
 
-setupInput()
+// console.log("Connecting ...");
+
+// setupInput();
 
 // const handleUserInput = function (key) {
 //   let command = ''
@@ -41,6 +45,3 @@ setupInput()
 //   return stdin;
 // };
 
-console.log("Connecting ...");
-
-setupInput();

@@ -19,16 +19,15 @@ const connect = function () {
     
     conn.write('Name: XST');
 
-    //for the Move: up message
-  //   setInterval(() => {
-    // conn.write(`${command}`);  
-  // }, 50);
-    
   });
 
   return conn;
 };
 
-module.exports = {
-  connect
-}
+module.exports = connect
+
+
+  //for the Move: up message
+  //   setInterval(() => {
+    // conn.write(`${command}`);  
+  // }, 50);
